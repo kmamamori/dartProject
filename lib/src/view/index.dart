@@ -1,35 +1,32 @@
-void displayQuiz(questions) async {
-  var i = 0;
-  await questions.forEach(await (q) {
-    print('${++i}\t' + q['stem'] + '\n');
-  });
-  return;
-}
+class view{
+  void displayQuestion(q){
+    print(q);
+  }
 
-void type1Q(options) {
-  var op = 0;
-  print('This is a Multiple choice questins');
-  print('The opcions are ');
-  options.forEach((o) {
-    print('Enter ${++op} for option-${o}');
-  });
-}
+  void displayQuestions(questions){
+    var i=0;
+    questions.forEach((q){
+      print('Question${++i}');
+      print('\t'+q['stem']+'\n');
+    });
+  }
 
-void type2Q() {
-  print('This is a fill-in-the-blank question.');
-  print('Enter your answer:');
-}
+  int displayOptions(ops){
+    var i = 0;
+    ops.forEach((o){
+      print('\tEnter ${++i} for option-${o}');
+    });
+    return i;
+  }
 
-void displayGrade(grade) {
-  print('The grade you received is: ${grade}');
-  print('Would you like to review the question you got wrong? Enter 1 if so.');
-}
+  void displayReview(grades, questions){
+    var i = 0;
+    questions.forEach((q){
+      if(grades[i++]==0){
+        displayQuestion('${i} - ${q['stem']}');
+        print('\n');
+      }
+    });
+  }
 
-void displayReview(n, questions) {
-  var i = 0;
-  questions.forEach((q) {
-    if (n[i]==1) {
-      print('${i++}\t' + q['stem']);
-    }
-  });
 }

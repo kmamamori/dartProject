@@ -1,10 +1,33 @@
-import 'dart:math';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+class model{
 
-dynamic getQuiz() async{
-  var r = Random();
-  var url = 'http://www.cs.utep.edu/cheon/cs4381/homework/quiz?quiz=quiz0${r.nextInt(7)}';
-  var response = await http.get(url);
-  return await json.decode(response.body);
+  List questions = List();
+  List grades = List();
+  var res;
+  var quizName;
+  
+  void setResponse(res){
+    this.res = res;
+  }
+
+  bool get getResponse => res;
+
+  void setQuestions(questions){
+    questions.forEach((q){
+      this.questions.add(q);
+    });
+  }
+
+  void setQuizName(name){
+    quizName = name;
+  }
+
+  get getQuestions => questions;
+
+
+  void addAnswer(a){
+    grades.add(a);
+  }
+
+  get getGrades => grades;
+
 }
